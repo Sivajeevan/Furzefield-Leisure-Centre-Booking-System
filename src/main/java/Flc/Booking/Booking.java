@@ -25,12 +25,12 @@ public class Booking {
 
     public void attend(int rating, String comment) {
         if (rating < 1 || rating > 5) {
-            System.out.println("❌ Invalid rating!");
+            System.out.println("Invalid rating!");
             return;
         }
 
         if (status == BookingStatus.ATTENDED) {
-            System.out.println("❌ Already attended!");
+            System.out.println("Already attended!");
             return;
         }
 
