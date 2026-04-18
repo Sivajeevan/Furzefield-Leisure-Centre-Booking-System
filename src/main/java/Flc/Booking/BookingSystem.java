@@ -33,8 +33,7 @@ public class BookingSystem {
         }
 
         for (Booking b : bookings) {
-            if (b.getMember().getId() == m.getId() &&
-                b.getLesson().getId() == l.getId()) {
+            
                 System.out.println("Duplicate booking!");
                 return null;
             }
