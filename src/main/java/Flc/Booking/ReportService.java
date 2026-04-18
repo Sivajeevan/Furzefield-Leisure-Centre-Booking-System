@@ -41,4 +41,33 @@ public class ReportService {
    
     // CHAMPION REPORT
   
-   
+    public static void championReport(List<Lesson> lessons) {
+
+        Map<String, Double> incomeMap = new HashMap<>();
+
+        for (Lesson l : lessons) {
+
+            double income = l.getBookings().size() * l.getPrice();
+
+            incomeMap.put(
+                l.getType(),
+                incomeMap.getOrDefault(l.getType(), 0.0) + income
+            );
+        }
+
+        String topExercise = "";
+        double maxIncome = 0;
+
+        for (String type : incomeMap.keySet()) {
+
+            System.out.println(type + " Income: £" + incomeMap.get(type));
+
+            if (incomeMap.get(type) > maxIncome) {
+                maxIncome = incomeMap.get(type);
+                topExercise = type;
+            }
+        }
+
+        System.out.println("Champion Exercise: " + topExercise);
+    }
+}
