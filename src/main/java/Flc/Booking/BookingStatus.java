@@ -8,6 +8,6 @@ package Flc.Booking;
  *
  * @author Admin
  */
-public class BookingStatus {
-    
+public enum BookingStatus {
+    BOOKED, ATTENDED, CANCELLED
 }
