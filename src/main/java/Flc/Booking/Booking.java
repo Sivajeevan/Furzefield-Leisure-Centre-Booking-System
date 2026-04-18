@@ -9,19 +9,7 @@ package Flc.Booking;
  * @author Admin
  */
 
-public class Booking {
-    private int id;
-    private Member member;
-    private Lesson lesson;
-    private BookingStatus status;
-    private Review review;
 
-    public Booking(int id, Member member, Lesson lesson) {
-        this.id = id;
-        this.member = member;
-        this.lesson = lesson;
-        this.status = BookingStatus.BOOKED;
-    }
 
     public void attend(int rating, String comment) {
         if (rating < 1 || rating > 5) {
