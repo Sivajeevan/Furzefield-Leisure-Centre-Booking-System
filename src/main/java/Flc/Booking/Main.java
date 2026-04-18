@@ -51,13 +51,13 @@ public class Main {
             int choice = sc.nextInt();
             sc.nextLine(); // clear buffer
 
-            // =========================
+           
             // 1. BOOK LESSON
-            // =========================
+          
             if (choice == 1) {
 
-                System.out.println("1. View by Day");
-                System.out.println("2. View by Type");
+                System.out.println("1. View Lessons ByDay");
+                System.out.println("2. View Lessons ByType");
 
                 int option = sc.nextInt();
                 sc.nextLine();
@@ -77,7 +77,7 @@ public class Main {
                     }
 
                     if (filtered.isEmpty()) {
-                        System.out.println("❌ No lessons found for this day");
+                        System.out.println("No lessons found for this day");
                         continue;
                     }
                 }
@@ -95,13 +95,13 @@ public class Main {
                     }
 
                     if (filtered.isEmpty()) {
-                        System.out.println("❌ No lessons found for this type");
+                        System.out.println("No lessons found for this type");
                         continue;
                     }
                 }
 
                 else {
-                    System.out.println("❌ Invalid option");
+                    System.out.println("Invalid option");
                     continue;
                 }
 
@@ -115,7 +115,7 @@ public class Main {
                         .orElse(null);
 
                 if (selected == null) {
-                    System.out.println("❌ Lesson not found");
+                    System.out.println("Lesson not found");
                     continue;
                 }
 
@@ -124,9 +124,9 @@ public class Main {
                 system.bookLesson(member, selected);
             }
 
-            // =========================
+           
             // 2. CHANGE BOOKING
-            // =========================
+           
             else if (choice == 2) {
 
                 System.out.print("Enter Booking ID: ");
@@ -146,18 +146,18 @@ public class Main {
                 system.changeBooking(bookingId, newLesson);
             }
 
-            // =========================
+          
             // 3. CANCEL BOOKING
-            // =========================
+           
             else if (choice == 3) {
                 System.out.print("Enter Booking ID: ");
                 int bookingId = sc.nextInt();
                 system.cancelBooking(bookingId);
             }
 
-            // =========================
+           
             // 4. ATTEND LESSON
-            // =========================
+            
             else if (choice == 4) {
                 System.out.print("Enter Booking ID: ");
                 int bookingId = sc.nextInt();
@@ -172,16 +172,16 @@ public class Main {
                 system.attendLesson(bookingId, rating, comment);
             }
 
-            // =========================
+            
             // 5. REPORT
-            // =========================
+            
             else if (choice == 5) {
                 ReportService.lessonReport(system.getLessons());
             }
 
-            // =========================
+            
             // 6. CHAMPION REPORT
-            // =========================
+            
             else if (choice == 6) {
                 ReportService.championReport(system.getLessons());
             }
