@@ -23,30 +23,7 @@ public class BookingSystem {
 
     // BOOK LESSON
     
-    public Booking bookLesson(Member m, Lesson l) {
-
-        if (l == null) return null;
-
-        if (l.isFull()) {
-            System.out.println("❌ Lesson full!");
-            return null;
-        }
-
-        for (Booking b : bookings) {
-            if (b.getMember() == m && b.getLesson() == l) {
-                System.out.println("❌ Duplicate booking!");
-                return null;
-            }
-        }
-
-        Booking booking = new Booking(bookingId++, m, l);
-        bookings.add(booking);
-        l.addBooking(booking);
-
-        System.out.println("✅ Booking successful! ID: " + booking.getId());
-        return booking;
-    }
-
+    
     // CANCEL BOOKING
     
     public void cancelBooking(int id) {
