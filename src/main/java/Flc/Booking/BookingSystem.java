@@ -28,13 +28,14 @@ public class BookingSystem {
         if (l == null) return null;
 
         if (l.isFull()) {
-            System.out.println("❌ Lesson full!");
+            System.out.println("Lesson full!");
             return null;
         }
 
         for (Booking b : bookings) {
-            if (b.getMember() == m && b.getLesson() == l) {
-                System.out.println("❌ Duplicate booking!");
+            if (b.getMember().getId() == m.getId() &&
+                b.getLesson().getId() == l.getId()) {
+                System.out.println("Duplicate booking!");
                 return null;
             }
         }
@@ -43,7 +44,7 @@ public class BookingSystem {
         bookings.add(booking);
         l.addBooking(booking);
 
-        System.out.println("✅ Booking successful! ID: " + booking.getId());
+        System.out.println("Booking successful! ID: " + booking.getId());
         return booking;
     }
 
@@ -55,12 +56,12 @@ public class BookingSystem {
             if (b.getId() == id) {
                 b.cancel();
                 b.getLesson().removeBooking(b);
-                System.out.println("✅ Cancelled");
+                System.out.println("Cancelled");
                 return;
             }
         }
 
-        System.out.println("❌ Booking not found");
+        System.out.println("Booking not found");
     }
 
     // ATTEND LESSON + REVIEW
@@ -71,22 +72,22 @@ public class BookingSystem {
             if (b.getId() == id) {
 
                 if (b.getStatus() == BookingStatus.CANCELLED) {
-                    System.out.println("❌ Cannot attend cancelled booking");
+                    System.out.println("Cannot attend cancelled booking");
                     return;
                 }
 
                 if (b.getStatus() == BookingStatus.ATTENDED) {
-                    System.out.println("❌ Already attended!");
+                    System.out.println("Already attended!");
                     return;
                 }
 
                 b.attend(rating, comment);
-                System.out.println("✅ Attended + Review added");
+                System.out.println("Attended + Review added");
                 return;
             }
         }
 
-        System.out.println("❌ Booking not found");
+        System.out.println("Booking not found");
     }
 
     // CHANGE BOOKING
@@ -97,12 +98,12 @@ public class BookingSystem {
             if (b.getId() == bookingId) {
 
                 if (newLesson == null) {
-                    System.out.println("❌ Invalid lesson");
+                    System.out.println("Invalid lesson");
                     return;
                 }
 
                 if (newLesson.isFull()) {
-                    System.out.println("❌ New lesson is full!");
+                    System.out.println("New lesson is full!");
                     return;
                 }
 
@@ -110,12 +111,12 @@ public class BookingSystem {
                 newLesson.addBooking(b);
                 b.setLesson(newLesson);
 
-                System.out.println("✅ Booking changed successfully");
+                System.out.println("Booking changed successfully");
                 return;
             }
         }
 
-        System.out.println("❌ Booking not found");
+        System.out.println("Booking not found");
     }
 
     // VIEW BY DAY
@@ -132,7 +133,7 @@ public class BookingSystem {
         }
 
         if (!found) {
-            System.out.println("❌ No lessons found for this day");
+            System.out.println("No lessons found for this day");
         }
     }
 
@@ -150,7 +151,7 @@ public class BookingSystem {
         }
 
         if (!found) {
-            System.out.println("❌ No lessons found for this type");
+            System.out.println("No lessons found for this type");
         }
     }
 
@@ -177,7 +178,7 @@ public class BookingSystem {
         }
 
         if (!found) {
-            System.out.println("❌ No reviews available");
+            System.out.println("No reviews available");
         }
     }
 }
