@@ -45,7 +45,8 @@ public class Main {
             System.out.println("4. Attend Lesson");
             System.out.println("5. Monthly Report");
             System.out.println("6. Champion Report");
-            System.out.println("7. Exit");
+            System.out.println("7. View Reviews");
+            System.out.println("8. Exit");
 
             System.out.print("Enter choice: ");
             int choice = sc.nextInt();
@@ -120,8 +121,21 @@ public class Main {
                 }
 
                 // BOOK
-                Member member = system.getMembers().get(0);
-                system.bookLesson(member, selected);
+               System.out.print("Enter Member ID (1-10): ");
+               int mId = sc.nextInt();
+               sc.nextLine();
+
+               Member member = system.getMembers().stream()
+               .filter(m -> m.getId() == mId)
+               .findFirst()
+               .orElse(null);
+
+if (member == null) {
+    System.out.println("❌ Member not found");
+    continue;
+}
+
+system.bookLesson(member, selected);
             }
 
            
@@ -186,9 +200,17 @@ public class Main {
                 ReportService.championReport(system.getLessons());
             }
 
-            // =========================
-            // EXIT
+     
+            // 7. VIEW REVIEWS
+           
             else if (choice == 7) {
+                system.viewReviews();
+            }
+
+            
+            // 8. EXIT
+            
+            else if (choice == 8) {
                 System.out.println("Exiting...");
                 break;
             }
